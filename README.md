@@ -9,13 +9,21 @@ To efficiently fetch appointment data, we designed a GraphQL schema that strictl
 
 type Appointment {
   id: ID!
+  
   patientName: String!
+  
   doctorName: String!
+  
   date: String!        # Format: "YYYY-MM-DD"
+  
   time: String!        # Format: "HH:mm" (24h)
+  
   duration: Int!       # Duration in minutes
+  
   type: String         # e.g., "Consultation", "Follow-up"
+  
   status: String!      # e.g., "Scheduled", "Confirmed"
+  
 }
 
 type Query {
