@@ -110,12 +110,12 @@ appointments = [
     }
 ]
 
-@app.route('/appointments', methods=['GET'])
+@app.route('/api/appointments', methods=['GET'])
 def get_appointments():
     # You can add logic here to filter by doctor/date via request.args if you want server-side filtering
     return jsonify(appointments)
 
-@app.route('/appointments', methods=['POST'])
+@app.route('/api/appointments', methods=['POST'])
 def create_appointment():
     data = request.json
     
@@ -134,7 +134,7 @@ def create_appointment():
     appointments.append(new_appt)
     return jsonify(new_appt), 201
 
-@app.route('/appointments/<appt_id>/status', methods=['PATCH'])
+@app.route('/api/appointments/<appt_id>/status', methods=['PATCH'])
 def update_status(appt_id):
     data = request.json
     new_status = data.get('status')
