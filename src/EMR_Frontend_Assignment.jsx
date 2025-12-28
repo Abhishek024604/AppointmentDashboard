@@ -3,6 +3,8 @@ import axios from "axios";
 
 const API_BASE_URL = "/api";
 
+//AppointmentManagementView function is at last
+
 /**
  * ==============================================================================
  * ICONS

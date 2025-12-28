@@ -139,7 +139,16 @@ def update_status(appt_id):
     
     for appt in appointments:
         if appt['id'] == appt_id:
+            # AWS AURORA TRANSACTIONAL WRITE
+            # In a production environment, this is where we would execute 
+            # a SQL UPDATE statement within a transaction block.
+            # Example: cursor.execute("UPDATE appointments SET status = %s WHERE id = %s", (new_status, appt_id))
             appt['status'] = new_status
+            # APPSYNC SUBSCRIPTION TRIGGER
+            # After the database commit is successful, the mutation would return 
+            # the updated object. This return event is what triggers the 
+            # @aws_subscribe directive in AppSync, pushing the update 
+            # to all clients listening to 'onUpdateAppointment'.
             return jsonify(appt)
             
     return jsonify({"error": "Appointment not found"}), 404
