@@ -72,7 +72,9 @@ This in-place modification ensures that the change is immediately reflected in t
 Idempotent Response: The function returns the fully updated appointment object (jsonify(appt)). This allows the frontend to immediately verify the new state without needing to trigger a second "fetch" query, keeping the Client UI and Server State synchronized.
 
 
-===>>>>>>>   Enforcing Data Consistency in a Production System
+
+
+===>>>>>>> # Enforcing Data Consistency in a Production System
 
 1. Database Transactions
 In our mock Python code, updating a status is a single step. In a real system (like AWS Aurora), a booking might involve multiple steps:
