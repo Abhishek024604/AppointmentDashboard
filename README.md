@@ -80,8 +80,11 @@ Idempotent Response: The function returns the fully updated appointment object (
 In our mock Python code, updating a status is a single step. In a real system (like AWS Aurora), a booking might involve multiple steps:
 
 . Check if the slot is free.
+
 . Create the appointment record.
+
 . Decrement the doctor's available slots.
+
 . Charge the patient's credit card.
 
 We wrap these steps in a Transaction. If Step 4 fails (card declined), the database "Rolls Back" steps 1, 2, and 3 instantly. This ensures the database never enters an invalid state (e.g., a booked appointment with no payment).
