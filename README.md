@@ -27,7 +27,6 @@ type Appointment {
 }
 
 type Query {
-  # Fetches all appointments, with optional server-side filtering
   getAppointments(doctor: String, date: String): [Appointment]!
 }
 
