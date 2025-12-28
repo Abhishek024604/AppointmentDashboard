@@ -5,7 +5,7 @@ const API_BASE_URL = "/api";
 
 /**
  * ==============================================================================
- * ICONS (Unchanged)
+ * ICONS
  * ==============================================================================
  */
 const UserIcon = () => <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>;
@@ -430,11 +430,10 @@ export default function AppointmentManagementView() {
   const [appointments, setAppointments] = useState([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
   
-  // SHARED STATE (LIFTED UP)
   const [selectedDoctor, setSelectedDoctor] = useState("All Doctors");
   const [selectedDate, setSelectedDate] = useState(getLocalTodayStr());
 
-  // ASYNC FETCH
+  // FETCH
   const refreshData = async () => {
     try {
         const response = await axios.get(`${API_BASE_URL}/appointments`);
@@ -448,7 +447,7 @@ export default function AppointmentManagementView() {
     refreshData();
   }, []);
 
-  // ASYNC CREATE
+// create
   const handleCreate = async (formData) => {
     try {
       await axios.post(`${API_BASE_URL}/appointments`, formData);
@@ -460,7 +459,7 @@ export default function AppointmentManagementView() {
     }
   };
 
-  // ASYNC UPDATE
+  //UPDATE
   const handleStatusUpdate = async (id, status) => {
     try {
         await axios.patch(`${API_BASE_URL}/appointments/${id}/status`, { status });

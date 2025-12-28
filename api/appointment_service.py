@@ -3,15 +3,14 @@ from flask_cors import CORS
 import uuid
 
 app = Flask(__name__)
-# Enable CORS for all routes so React can communicate with this server
 CORS(app)
 
-# In-memory "database"
+# mock data
 appointments = [
     {
         "id": "1",
         "patientName": "John Doe",
-        "date": "2025-12-28",  # Set to "Today" based on current context
+        "date": "2025-12-28",  
         "time": "09:00",
         "duration": 60,
         "doctorName": "Dr. Sarah Johnson",
@@ -21,7 +20,7 @@ appointments = [
     {
         "id": "2",
         "patientName": "Emily Clark",
-        "date": "2025-12-28", # Also "Today" to test list view
+        "date": "2025-12-29", # Upcoming
         "time": "10:30",
         "duration": 30,
         "doctorName": "Dr. Michael Chen",
@@ -71,7 +70,7 @@ appointments = [
     {
         "id": "7",
         "patientName": "David Wilson",
-        "date": "2026-01-02", # Upcoming (Next Year)
+        "date": "2026-01-02", # Upcoming 
         "time": "13:00",
         "duration": 45,
         "doctorName": "Dr. Sarah Johnson",
@@ -101,7 +100,7 @@ appointments = [
     {
         "id": "10",
         "patientName": "Karen Thomas",
-        "date": "2025-12-28", # Today
+        "date": "2025-12-28", 
         "time": "13:00",
         "duration": 60,
         "doctorName": "Dr. Sarah Johnson",
@@ -112,7 +111,6 @@ appointments = [
 
 @app.route('/api/appointments', methods=['GET'])
 def get_appointments():
-    # You can add logic here to filter by doctor/date via request.args if you want server-side filtering
     return jsonify(appointments)
 
 @app.route('/api/appointments', methods=['POST'])
